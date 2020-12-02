@@ -21,26 +21,77 @@
         </li>
          <li>
          @if(auth()->user()->hasPermission('read_categories'))
-            <li>
-                 <a class="app-menu__item " href="{{route('dashboard.categories.index')}}">
-                     <i class="app-menu__icon fa fa-list"></i>
-                     <span
-                         class="app-menu__label">{{ __('site.Category')}}
-                     </span>
-                 </a>
+            <li class="treeview">
+                <a class="app-menu__item" href="#" data-toggle="treeview">
+                    <i class="app-menu__icon fa fa-laptop"></i>
+                    <span class="app-menu__label">{{ __('site.Service')}}</span>
+                    <i class="treeview-indicator fa fa-angle-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a class="treeview-item" href="{{route('dashboard.categories.index')}}"><i class="icon fa fa-circle-o"></i>
+                            {{ __('site.General Description')}}
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="treeview-item" href="{{route('dashboard.serviceItem.index')}}"
+                           rel="noopener"><i class="icon fa fa-circle-o"></i> {{ __('site.All Service')}}
+                        </a>
+                    </li>
+
+                </ul>
             </li>
+
          @endif
 
-        @if(auth()->user()->hasPermission('read_sub_categories'))
+        @if(auth()->user()->hasPermission('read_consultation_requests'))
             <li>
-                <a class="app-menu__item " href="{{route('dashboard.sub_categories.index')}}">
+                <a class="app-menu__item " href="{{route('dashboard.consultation_requests.index')}}">
                     <i class="app-menu__icon fa fa-list"></i>
                     <span
-                        class="app-menu__label">{{ __('site.sub-Category')}}
+                        class="app-menu__label">{{ __('site.Consultation Requests')}}
                      </span>
                 </a>
             </li>
         @endif
+
+        @if(auth()->user()->hasPermission('read_advertisement'))
+            <li class="treeview">
+                <a class="app-menu__item" href="#" data-toggle="treeview">
+                    <i class="app-menu__icon fa fa-laptop"></i>
+                    <span class="app-menu__label">{{ __('site.Advertisement')}}</span>
+                    <i class="treeview-indicator fa fa-angle-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a class="treeview-item" href="{{route('dashboard.advertisement.index')}}"><i class="icon fa fa-circle-o"></i>
+                            {{ __('site.General Description')}}
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="treeview-item" href="{{route('dashboard.advertisementItems.index')}}"
+                           rel="noopener"><i class="icon fa fa-circle-o"></i> {{ __('site.All Advertisement')}}
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+        @endif
+
+        @if(auth()->user()->hasPermission('read_WhoAreWe'))
+            <li>
+                <a class="app-menu__item " href="{{route('dashboard.WhoAreWes.index')}}">
+                    <i class="app-menu__icon fa fa-list"></i>
+                    <span
+                        class="app-menu__label">{{ __('site.Who Are We')}}
+                     </span>
+                </a>
+            </li>
+        @endif
+
 
         @if(auth()->user()->hasPermission('read_roles'))
             <li>
@@ -93,27 +144,27 @@
             </li>
         @endif
 
-         @if(auth()->user()->hasPermission('read_donations'))
-            <li>
-                <a class="app-menu__item " href="{{route('dashboard.donations.index')}}">
-                    <i class="app-menu__icon fa fa-product-hunt"></i>
-                    <span
-                        class="app-menu__label">{{ __('site.Donation items')}}
-                </span>
-                </a>
-            </li>
-        @endif
+{{--         @if(auth()->user()->hasPermission('read_donations'))--}}
+{{--            <li>--}}
+{{--                <a class="app-menu__item " href="{{route('dashboard.donations.index')}}">--}}
+{{--                    <i class="app-menu__icon fa fa-product-hunt"></i>--}}
+{{--                    <span--}}
+{{--                        class="app-menu__label">{{ __('site.Donation items')}}--}}
+{{--                </span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--        @endif--}}
 
-        @if(auth()->user()->hasPermission('read_posts'))
-            <li>
-                <a class="app-menu__item " href="#">
-                    <i class="app-menu__icon fa Example of clipboard fa-clipboard"></i>
-                    <span
-                        class="app-menu__label">{{ __('site.Posts')}}
-                </span>
-                </a>
-            </li>
-        @endif
+{{--        @if(auth()->user()->hasPermission('read_posts'))--}}
+{{--            <li>--}}
+{{--                <a class="app-menu__item " href="#">--}}
+{{--                    <i class="app-menu__icon fa Example of clipboard fa-clipboard"></i>--}}
+{{--                    <span--}}
+{{--                        class="app-menu__label">{{ __('site.Posts')}}--}}
+{{--                </span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--        @endif--}}
 
 
 

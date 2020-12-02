@@ -8,7 +8,7 @@
     <meta property="twitter:site" content="@pratikborsadiya">
     <meta property="twitter:creator" content="@pratikborsadiya">
 
-    <title>{{__('site.Donation')}}</title>
+    <title>{{__('site.Al Mosafer')}}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

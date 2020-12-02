@@ -35,7 +35,7 @@ class CategoryController extends Controller
           public function store(Request $request)
           {
               $request->validate([
-                  'name' => 'required|unique:categories,name',
+                  'description' => 'required|unique:categories,description',
               ]);
               Category::create($request->all());
               session()->flash('success',__('site.DataAddSuccessfully'));
@@ -55,7 +55,7 @@ class CategoryController extends Controller
           public function update(Request $request, Category $category)
           {
               $request->validate([
-                  'name' => 'required|unique:categories,name,'.$category->id,
+                  'description' => 'required|unique:categories,description,'.$category->id,
               ]);
               $category->update($request->all());
               session()->flash('success',__('site.DataUpdatedSuccessfully'));

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CreateWhoAreWesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('who_are_wes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('description')->nullable();
-
-            $table->softDeletes();
+            $table->text('general_description')->nullable();
+            $table->text('team_description')->nullable();
+            $table->string('youtube_link')->nullable();
+            $table->string('photo1')->nullable();
+            $table->string('photo2')->nullable();
             $table->timestamps();
-
-
         });
     }
 
@@ -31,6 +31,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('who_are_wes');
     }
 }

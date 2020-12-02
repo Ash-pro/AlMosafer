@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('dashboard')
     ->name('dashboard.')
-    ->middleware(['auth','role:super_admin'])
+//    ->middleware(['auth','role:super_admin,admin'])
     ->group(function (){
 
     //dashboard.welcome  - welcome_Route
@@ -16,8 +16,20 @@ Route::prefix('dashboard')
     //sub Categories
         Route::resource('sub_categories','SubCategoryController')->except(['show']);
 
-    //sub consultation_requests
+    //consultation_requests
         Route::resource('consultation_requests','Consultation_requestsController')->except(['show']);
+
+     //serviceItem
+        Route::resource('serviceItem','ServiceItemController')->except(['show']);
+
+     //advertisement
+        Route::resource('advertisement','AdvertisementController')->except(['show']);
+
+     //advertisementItem
+        Route::resource('advertisementItems','AdvertisementItemsController')->except(['show']);
+
+    //WhoAreWe
+            Route::resource('WhoAreWes','whoAreWeController')->except(['show']);
 
     //Role Route
         Route::resource('roles','RoleController');

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Consultation_requests;
 use App\Http\Controllers\Controller;
+use App\ServiceItem;
 use Illuminate\Http\Request;
 
-class Consultation_requestsController extends Controller
+class ServiceItemController extends Controller
 {
     public function __construct()
     {
         //Parent Path
-        $this->path = "dashboard.consultation_requests.";
+        $this->path = "dashboard.serviceItem.";
 
         //Permissions
         $this->middleware('permission:read_categories')->only(['index']);
@@ -23,8 +23,8 @@ class Consultation_requestsController extends Controller
 
     public function index()
     {
-        $consultation_requests = Consultation_requests::WhenSearch(request()->search)->paginate(5);
-        return view($this->path.'index',compact('consultation_requests'));
+       $serviceItem = ServiceItem::WhenSearch(request()->search)->paginate(5);
+        return view($this->path.'index',compact('serviceItem'));
     }//end of index
 
     public function create()
@@ -35,36 +35,32 @@ class Consultation_requestsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories,name',
+            'name' => 'required|unique:service_items,name',
         ]);
-        Consultation_requests::create($request->all());
+
+        ServiceItem::create($request->all());
         session()->flash('success',__('site.DataAddSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of store
 
-    public function show($id)
+    public function edit(ServiceItem $serviceItem)
     {
-        //
-    }//end of show
-
-    public function edit(Consultation_requests $consultation_requests)
-    {
-        return view($this->path.'create',compact('consultation_requests'));
+        return view($this->path.'create',compact('serviceItem'));
     }//end of edit
 
-    public function update(Request $request, Consultation_requests $consultation_requests)
+    public function update(Request $request, ServiceItem $serviceItem)
     {
         $request->validate([
-            'name' => 'required|unique:consultation_requests,name,'.$consultation_requests->id,
+            'name' => 'required|unique:service_items,name,'.$serviceItem->id,
         ]);
-        $consultation_requests->update($request->all());
+        $serviceItem->update($request->all());
         session()->flash('success',__('site.DataUpdatedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of update
 
-    public function destroy(Consultation_requests $consultation_requests)
+    public function destroy(ServiceItem $serviceItem)
     {
-        $consultation_requests->delete();
+        $serviceItem->delete();
         session()->flash('success',__('site.DataDeletedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of destroy

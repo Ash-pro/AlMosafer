@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Consultation_requests;
+use App\AdvertisementItems;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Consultation_requestsController extends Controller
+class AdvertisementItemsController extends Controller
 {
     public function __construct()
     {
         //Parent Path
-        $this->path = "dashboard.consultation_requests.";
+        $this->path = "dashboard.advertisementItems.";
 
         //Permissions
         $this->middleware('permission:read_categories')->only(['index']);
@@ -23,8 +23,8 @@ class Consultation_requestsController extends Controller
 
     public function index()
     {
-        $consultation_requests = Consultation_requests::WhenSearch(request()->search)->paginate(5);
-        return view($this->path.'index',compact('consultation_requests'));
+        $AdvertisementItems = AdvertisementItems::WhenSearch(request()->search)->paginate(5);
+        return view($this->path.'index',compact('AdvertisementItems'));
     }//end of index
 
     public function create()
@@ -35,36 +35,31 @@ class Consultation_requestsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories,name',
+            'name' => 'required|unique:advertisement_items,name',
         ]);
-        Consultation_requests::create($request->all());
+        AdvertisementItems::create($request->all());
         session()->flash('success',__('site.DataAddSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of store
 
-    public function show($id)
+    public function edit(AdvertisementItems $AdvertisementItems)
     {
-        //
-    }//end of show
-
-    public function edit(Consultation_requests $consultation_requests)
-    {
-        return view($this->path.'create',compact('consultation_requests'));
+        return view($this->path.'create',compact('AdvertisementItems'));
     }//end of edit
 
-    public function update(Request $request, Consultation_requests $consultation_requests)
+    public function update(Request $request, AdvertisementItems $AdvertisementItems)
     {
         $request->validate([
-            'name' => 'required|unique:consultation_requests,name,'.$consultation_requests->id,
+            'description' => 'required|unique:categories,description,'.$AdvertisementItems->id,
         ]);
-        $consultation_requests->update($request->all());
+        $AdvertisementItems->update($request->all());
         session()->flash('success',__('site.DataUpdatedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of update
 
-    public function destroy(Consultation_requests $consultation_requests)
+    public function destroy(AdvertisementItems $AdvertisementItems)
     {
-        $consultation_requests->delete();
+        $AdvertisementItems->delete();
         session()->flash('success',__('site.DataDeletedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of destroy

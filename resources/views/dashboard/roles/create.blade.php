@@ -62,7 +62,7 @@
                         <tbody>
 
                         @php
-                            $models = ['users','categories','sub_categories','donation_item','posts'];
+                            $models = ['users','categories','roles','settings','consultation_requests' ,'advertisement' ,'advertisementItem'];
                         @endphp
 
                         @foreach( $models as $index=>$model )

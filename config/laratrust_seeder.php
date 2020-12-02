@@ -21,6 +21,11 @@ return [
             'roles'=>'c,r,u,d',
             'settings'=>'c,r,u,d',
             'donations' => 'c,r,u,d',
+            'consultation_requests' => 'c,r,u,d',
+            'serviceItem' => 'c,r,u,d',
+            'advertisement' => 'c,r,u,d',
+            'advertisementItem' => 'c,r,u,d',
+            'WhoAreWe' => 'c,r,u,d',
         ],
 
         'admin' => [],

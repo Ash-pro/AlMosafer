@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Consultation_requests;
 use App\Http\Controllers\Controller;
+use App\WhoAreWe;
 use Illuminate\Http\Request;
 
-class Consultation_requestsController extends Controller
+class whoAreWeController extends Controller
 {
     public function __construct()
     {
         //Parent Path
-        $this->path = "dashboard.consultation_requests.";
+        $this->path = "dashboard.WhoAreWes.";
 
         //Permissions
         $this->middleware('permission:read_categories')->only(['index']);
@@ -23,8 +23,8 @@ class Consultation_requestsController extends Controller
 
     public function index()
     {
-        $consultation_requests = Consultation_requests::WhenSearch(request()->search)->paginate(5);
-        return view($this->path.'index',compact('consultation_requests'));
+        $WhoAreWes = WhoAreWe::WhenSearch(request()->search)->paginate(5);
+        return view($this->path.'index',compact('WhoAreWes'));
     }//end of index
 
     public function create()
@@ -35,36 +35,31 @@ class Consultation_requestsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories,name',
+            'general_description' => 'required|unique:who_are_wes,general_description',
         ]);
-        Consultation_requests::create($request->all());
+        WhoAreWe::create($request->all());
         session()->flash('success',__('site.DataAddSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of store
 
-    public function show($id)
+    public function edit(WhoAreWe $WhoAreWe)
     {
-        //
-    }//end of show
-
-    public function edit(Consultation_requests $consultation_requests)
-    {
-        return view($this->path.'create',compact('consultation_requests'));
+        return view($this->path.'create',compact('WhoAreWe'));
     }//end of edit
 
-    public function update(Request $request, Consultation_requests $consultation_requests)
+    public function update(Request $request, WhoAreWe $WhoAreWe)
     {
         $request->validate([
-            'name' => 'required|unique:consultation_requests,name,'.$consultation_requests->id,
+            'general_description' => 'required|unique:who_are_wes,general_description,'.$WhoAreWe->id,
         ]);
-        $consultation_requests->update($request->all());
+        $WhoAreWe->update($request->all());
         session()->flash('success',__('site.DataUpdatedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of update
 
-    public function destroy(Consultation_requests $consultation_requests)
+    public function destroy(WhoAreWe $WhoAreWe)
     {
-        $consultation_requests->delete();
+        $WhoAreWe->delete();
         session()->flash('success',__('site.DataDeletedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of destroy

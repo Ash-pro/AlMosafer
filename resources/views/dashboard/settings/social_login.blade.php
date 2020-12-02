@@ -4,9 +4,9 @@
     .headGroup {
         padding-left: 40%;
         padding-top: 8px;
-        color: black;
+        color: red;
         font-family: "Arial Black";
-        border: 3px #0c7cd5 solid;
+
         width: 100%;
         height: 40px;
     }

@@ -3,8 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="ed990804-3a65-4a53-8ce0-d9e6e57d6df0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Consultation_requestsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Consultation_requestsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/laratrust_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/laratrust_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_16_142227_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_16_142227_create_categories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/site.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/categories/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/categories/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/categories/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/categories/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/consultation_requests/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/consultation_requests/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/consultation_requests/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/consultation_requests/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/roles/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/roles/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/settings/social_links.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/settings/social_links.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/settings/social_login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/settings/social_login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard/_aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard/_aside.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/dashboard/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/dashboard/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +161,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard/consultation_requests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard/contact_us" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -157,11 +173,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\mydonation\resources\views\dashboard\donations" />
-      <recent name="C:\laragon\www\mydonation\resources\views\dashboard\donation" />
-      <recent name="C:\laragon\www\mydonation\resources\views\dashboard" />
-      <recent name="C:\laragon\www\mydonation\resources\views\dashboard\settings" />
-      <recent name="C:\laragon\www\mydonation\routes\dashboard" />
+      <recent name="C:\laragon\www\Al_mosafer\resources\views\dashboard\contact_us" />
+      <recent name="C:\laragon\www\Al_mosafer\resources\views\dashboard\WhoAreWe" />
+      <recent name="C:\laragon\www\Al_mosafer\resources\views\dashboard\advertisementItems" />
+      <recent name="C:\laragon\www\Al_mosafer\resources\views\dashboard\advertisement" />
+      <recent name="C:\laragon\www\Al_mosafer\resources\views\dashboard\service_item" />
     </key>
   </component>
   <component name="RunManager">
@@ -204,7 +220,8 @@
       <workItem from="1599654125205" duration="38000" />
       <workItem from="1599919574409" duration="25962000" />
       <workItem from="1600415384817" duration="1840000" />
-      <workItem from="1606721117188" duration="3167000" />
+      <workItem from="1606721117188" duration="13875000" />
+      <workItem from="1606880574814" duration="7075000" />
     </task>
     <servers />
   </component>
@@ -216,10 +233,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="373" y="167" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1598452846850" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606784344879">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606940019480">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1606784344879" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1606940019480" />
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1600424850936">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -236,22 +253,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="522" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1599936846477" />
-    <state x="379" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1600420698029">
+    <state x="379" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1606880575843">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1600420698029" />
+    <state x="379" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1606880575843" />
     <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599936858231">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1599936858231" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1599936361097">
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1606788671188">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1599936361097" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1606784548696">
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1606788671188" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1606942244436">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1606784548696" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1606942244436" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

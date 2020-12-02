@@ -1,14 +1,30 @@
 @extends('layouts.dashboard.app')
 
+<style>
+
+    .rowDes{
+
+       height: 150px;
+        width: 350px;
+    }
+    .rowDes2{
+        height: 150px;
+        width: 200px;
+    }
+
+
+</style>
+
+
 @section('content')
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-list"></i> {{__('site.Category')}} </h1>
+                <h1><i class="fa fa-list"></i> {{__('site.Who Are We')}} </h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
             <li class="breadcrumb-item"><a href="{{route('dashboard.welcome')}}">Dashboard</a></li>
-            <li class="breadcrumb-item"> {{__('site.Category')}}</li>
+            <li class="breadcrumb-item"> {{__('site.Who Are We')}}</li>
         </ul>
     </div>
 
@@ -28,17 +44,17 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>Search</button>
-                                @if($categories->count()  == 1)
-                                    @foreach( $categories as $category )
-                                        @if(auth()->user()->hasPermission('create_categories'))
-                                            <a href="{{route('dashboard.categories.edit', $category->id)}}" class="btn btn-warning" ><i class="fa fa-edit">{{__('site.Edit')}}</i></a>
+                                @if($WhoAreWes->count()  == 1)
+                                    @foreach( $WhoAreWes as $WhoAreWe )
+                                        @if(auth()->user()->hasPermission('create_WhoAreWe'))
+                                            <a href="{{route('dashboard.WhoAreWes.edit', $WhoAreWe->id)}}" class="btn btn-warning" ><i class="fa fa-edit">{{__('site.Edit')}}</i></a>
                                         @else
                                             <a href="#" disabled class="btn btn-primary"><i class="fa fa-plus"></i> Update</a>
                                         @endif
                                     @endforeach
                                 @else
-                                    @if(auth()->user()->hasPermission('create_categories'))
-                                        <a href="{{route('dashboard.categories.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
+                                    @if(auth()->user()->hasPermission('create_advertisement'))
+                                        <a href="{{route('dashboard.WhoAreWes.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
                                     @else
                                         <a href="#" disabled class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
                                     @endif
@@ -56,31 +72,37 @@
         <div class="row">
             <div class="col-md-12">
                 <hr>
-                @if($categories->count() > 0 )
+                @if($WhoAreWes->count() > 0 )
                     <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{__('site.description')}}</th>
+                            <th>{{__('site.General Description')}}</th>
+                            <th>{{__('site.Teams Description')}}</th>
+                             <th>{{__('site.Youtube Link')}}</th>
+{{--                             <th>{{__('site.photo_1')}}</th>--}}
+{{--                             <th>{{__('site.photo_2')}}</th>--}}
                             <th>{{__('site.action')}}</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($categories as $index=>$category)
+                        @foreach($WhoAreWes as $index=>$WhoAreWe)
                             <tr>
                                 <td>{{++$index}}</td>
-                                <td> {{\Illuminate\Support\Str::limit($category->description, 100)}} </td>
+                                <td class="rowDes"> {{\Illuminate\Support\Str::limit($WhoAreWe->general_description, 100)}} </td>
+                                <td class="rowDes"> {{\Illuminate\Support\Str::limit($WhoAreWe->team_description, 50)}} </td>
+                                <td class="rowDes2"> {{\Illuminate\Support\Str::limit($WhoAreWe->youtube_link, 50)}} </td>
                                 <td>
                                     {{--Edit buttom--}}
-                                    @if(auth()->user()->hasPermission('update_categories'))
-                                        <a href="{{route('dashboard.categories.edit', $category->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit">Edit</i></a>
+                                    @if(auth()->user()->hasPermission('update_WhoAreWe'))
+                                        <a href="{{route('dashboard.WhoAreWes.edit', $WhoAreWe->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit">Edit</i></a>
                                     @else
                                         <a href="#" disabled="" class="btn btn-warning btn-sm"><i class="fa fa-edit">{{__('site.Edit')}}</i></a>
                                     @endif
 
                                     {{--Delete buttom--}}
-                                    @if(auth()->user()->hasPermission('delete_categories'))
-                                        <form action="{{route('dashboard.categories.destroy', $category->id)}}" method="post" style="display: inline-block">
+                                    @if(auth()->user()->hasPermission('delete_WhoAreWe'))
+                                        <form action="{{route('dashboard.WhoAreWes.destroy', $WhoAreWe->id)}}" method="post" style="display: inline-block">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i>{{__('site.Delete')}}</button>
@@ -96,12 +118,14 @@
                         </tbody>
 
                     </table>
-                    {{$categories->appends(request()->query())->links()}}
+                    {{$WhoAreWes->appends(request()->query())->links()}}
                 @else
                     <h3 style="font-weight: 400; text-align: center"> No Record Found</h3>
                 @endif
             </div>
         </div>
+
+
     </div>{{--end-of-tile mb-4--}}
 
 

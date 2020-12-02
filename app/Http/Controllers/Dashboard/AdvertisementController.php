@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Consultation_requests;
+use App\Advertisement;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Consultation_requestsController extends Controller
+class AdvertisementController extends Controller
 {
     public function __construct()
     {
         //Parent Path
-        $this->path = "dashboard.consultation_requests.";
+        $this->path = "dashboard.advertisement.";
 
         //Permissions
         $this->middleware('permission:read_categories')->only(['index']);
@@ -23,8 +23,8 @@ class Consultation_requestsController extends Controller
 
     public function index()
     {
-        $consultation_requests = Consultation_requests::WhenSearch(request()->search)->paginate(5);
-        return view($this->path.'index',compact('consultation_requests'));
+        $advertisements = Advertisement::WhenSearch(request()->search)->paginate(5);
+        return view($this->path.'index',compact('advertisements'));
     }//end of index
 
     public function create()
@@ -35,36 +35,31 @@ class Consultation_requestsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories,name',
+            'description' => 'required|unique:categories,description',
         ]);
-        Consultation_requests::create($request->all());
+        Advertisement::create($request->all());
         session()->flash('success',__('site.DataAddSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of store
 
-    public function show($id)
+    public function edit(Advertisement $advertisements)
     {
-        //
-    }//end of show
-
-    public function edit(Consultation_requests $consultation_requests)
-    {
-        return view($this->path.'create',compact('consultation_requests'));
+        return view($this->path.'create',compact('advertisements'));
     }//end of edit
 
-    public function update(Request $request, Consultation_requests $consultation_requests)
+    public function update(Request $request, Advertisement $advertisements)
     {
         $request->validate([
-            'name' => 'required|unique:consultation_requests,name,'.$consultation_requests->id,
+            'description' => 'required|unique:categories,description,'.$advertisements->id,
         ]);
-        $consultation_requests->update($request->all());
+        $advertisements->update($request->all());
         session()->flash('success',__('site.DataUpdatedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of update
 
-    public function destroy(Consultation_requests $consultation_requests)
+    public function destroy(Advertisement $advertisements)
     {
-        $consultation_requests->delete();
+        $advertisements->delete();
         session()->flash('success',__('site.DataDeletedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of destroy
