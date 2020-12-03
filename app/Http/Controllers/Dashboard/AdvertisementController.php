@@ -35,7 +35,7 @@ class AdvertisementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description' => 'required|unique:categories,description',
+            'description' => 'required|unique:advertisements,description',
         ]);
         Advertisement::create($request->all());
         session()->flash('success',__('site.DataAddSuccessfully'));
@@ -50,7 +50,7 @@ class AdvertisementController extends Controller
     public function update(Request $request, Advertisement $advertisements)
     {
         $request->validate([
-            'description' => 'required|unique:categories,description,'.$advertisements->id,
+            'description' => 'required|unique:advertisements,description,'.$advertisements->id,
         ]);
         $advertisements->update($request->all());
         session()->flash('success',__('site.DataUpdatedSuccessfully'));

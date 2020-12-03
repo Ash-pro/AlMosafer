@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\ServiceItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceItemController extends Controller
 {
@@ -34,11 +35,16 @@ class ServiceItemController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|unique:service_items,name',
         ]);
 
-        ServiceItem::create($request->all());
+        ServiceItem::create([
+            'icon'=>$request->icon->store('images','public'),
+            'name'=>$request->name,
+            'description'=>$request->description,
+        ]);
         session()->flash('success',__('site.DataAddSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of store
@@ -53,7 +59,21 @@ class ServiceItemController extends Controller
         $request->validate([
             'name' => 'required|unique:service_items,name,'.$serviceItem->id,
         ]);
-        $serviceItem->update($request->all());
+
+        $data = $request->only(['name','description']);
+        if ($request->hasFile('icon')){
+            $icon = $request->icon->store('images','public');
+            Storage::disk('public')->delete($serviceItem->icon);
+            $data['icon'] = $icon;
+        }
+        $serviceItem->update($data);
+
+
+//        $serviceItem->update([
+//            'icon'=>$request->icon->store('images','public'),
+//            'name'=>$request->name,
+//            'description'=>$request->description,
+//        ]);
         session()->flash('success',__('site.DataUpdatedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of update

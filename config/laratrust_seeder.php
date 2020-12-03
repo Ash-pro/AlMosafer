@@ -26,6 +26,7 @@ return [
             'advertisement' => 'c,r,u,d',
             'advertisementItem' => 'c,r,u,d',
             'WhoAreWe' => 'c,r,u,d',
+            'contact_us' => 'c,r,u,d',
         ],
 
         'admin' => [],

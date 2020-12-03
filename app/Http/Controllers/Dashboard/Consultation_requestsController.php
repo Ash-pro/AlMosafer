@@ -38,8 +38,9 @@ class Consultation_requestsController extends Controller
             'name' => 'required|unique:categories,name',
         ]);
         Consultation_requests::create($request->all());
+
         session()->flash('success',__('site.DataAddSuccessfully'));
-        return redirect()->route($this->path.'index');
+        return view('welcome');
     }//end of store
 
     public function show($id)

@@ -91,6 +91,16 @@
                 </a>
             </li>
         @endif
+        @if(auth()->user()->hasPermission('read_WhoAreWe'))
+            <li>
+                <a class="app-menu__item " href="{{route('dashboard.contact_us.index')}}">
+                    <i class="app-menu__icon fa fa-list"></i>
+                    <span
+                        class="app-menu__label">{{ __('site.Contact Us')}}
+                     </span>
+                </a>
+            </li>
+        @endif
 
 
         @if(auth()->user()->hasPermission('read_roles'))

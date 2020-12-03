@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\WhoAreWe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class whoAreWeController extends Controller
 {
@@ -52,13 +53,25 @@ class whoAreWeController extends Controller
         $request->validate([
             'general_description' => 'required|unique:who_are_wes,general_description,'.$WhoAreWe->id,
         ]);
-        $WhoAreWe->update($request->all());
+
+        $WhoAreWe->update([
+
+            'general_description'=>$request->general_description,
+            'team_description'=>$request->team_description,
+            'youtube_link'=>$request->youtube_link,
+            'photo1'=>$request->photo1->store('images','public'),
+            'photo2'=>$request->photo2->store('images','public'),
+
+        ]);
         session()->flash('success',__('site.DataUpdatedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of update
 
     public function destroy(WhoAreWe $WhoAreWe)
     {
+//        dd($WhoAreWe->id);
+//        Storage::disk('public')->delete($WhoAreWe->photo1);
+//        Storage::disk('public')->delete($WhoAreWe->photo2);
         $WhoAreWe->delete();
         session()->flash('success',__('site.DataDeletedSuccessfully'));
         return redirect()->route($this->path.'index');

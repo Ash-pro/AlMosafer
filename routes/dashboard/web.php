@@ -31,6 +31,9 @@ Route::prefix('dashboard')
     //WhoAreWe
             Route::resource('WhoAreWes','whoAreWeController')->except(['show']);
 
+     //WhoAreWe
+            Route::resource('contact_us','ContactUsController')->except(['show']);
+
     //Role Route
         Route::resource('roles','RoleController');
 

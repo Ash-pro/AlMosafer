@@ -47,10 +47,21 @@
                                 @if($WhoAreWes->count()  == 1)
                                     @foreach( $WhoAreWes as $WhoAreWe )
                                         @if(auth()->user()->hasPermission('create_WhoAreWe'))
-                                            <a href="{{route('dashboard.WhoAreWes.edit', $WhoAreWe->id)}}" class="btn btn-warning" ><i class="fa fa-edit">{{__('site.Edit')}}</i></a>
+                                            <a href="{{route('dashboard.WhoAreWes.edit', $WhoAreWe->id)}}" class="btn btn-warning btn-lg" ><i class="fa fa-edit">{{__('site.Edit')}}</i></a>
                                         @else
                                             <a href="#" disabled class="btn btn-primary"><i class="fa fa-plus"></i> Update</a>
                                         @endif
+
+{{--    --}}{{--                                Delete    --}}
+{{--                                        @if(auth()->user()->hasPermission('delete_WhoAreWe'))--}}
+{{--                                            <form action="{{route('dashboard.WhoAreWes.destroy', $WhoAreWe->id)}}" method="post" style="display: inline-block">--}}
+{{--                                                @csrf--}}
+{{--                                                @method('delete')--}}
+{{--                                                <button type="submit" class="btn btn-danger delete"><i class="fa fa-trash"></i>{{__('site.Delete')}}</button>--}}
+{{--                                            </form>--}}
+{{--                                        @else--}}
+{{--                                          <a href="#" disabled="" class="btn btn-danger"><i class="fa fa-edit">{{__('site.Delete')}}</i></a>--}}
+{{--                                        @endif--}}
                                     @endforeach
                                 @else
                                     @if(auth()->user()->hasPermission('create_advertisement'))
@@ -59,6 +70,9 @@
                                         <a href="#" disabled class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
                                     @endif
                                 @endif
+
+{{--                                Delete buttom--}}
+
                             </div>
                         </div>{{-- end-of-col-4 --}}
 
@@ -76,13 +90,13 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
+                            <th width="30px">#</th>
                             <th>{{__('site.General Description')}}</th>
                             <th>{{__('site.Teams Description')}}</th>
                              <th>{{__('site.Youtube Link')}}</th>
 {{--                             <th>{{__('site.photo_1')}}</th>--}}
 {{--                             <th>{{__('site.photo_2')}}</th>--}}
-                            <th>{{__('site.action')}}</th>
+{{--                            <th>{{__('site.action')}}</th>--}}
                         </tr>
                         </thead>
                         <tbody>
@@ -93,14 +107,14 @@
                                 <td class="rowDes"> {{\Illuminate\Support\Str::limit($WhoAreWe->team_description, 50)}} </td>
                                 <td class="rowDes2"> {{\Illuminate\Support\Str::limit($WhoAreWe->youtube_link, 50)}} </td>
                                 <td>
-                                    {{--Edit buttom--}}
+{{--                                    Edit buttom--}}
                                     @if(auth()->user()->hasPermission('update_WhoAreWe'))
                                         <a href="{{route('dashboard.WhoAreWes.edit', $WhoAreWe->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit">Edit</i></a>
                                     @else
-                                        <a href="#" disabled="" class="btn btn-warning btn-sm"><i class="fa fa-edit">{{__('site.Edit')}}</i></a>
+                                        <a href="#" disabled="" class="btn btn-warning btn-lg"><i class="fa fa-edit">{{__('site.Edit')}}</i></a>
                                     @endif
 
-                                    {{--Delete buttom--}}
+{{--                                    Delete buttom--}}
                                     @if(auth()->user()->hasPermission('delete_WhoAreWe'))
                                         <form action="{{route('dashboard.WhoAreWes.destroy', $WhoAreWe->id)}}" method="post" style="display: inline-block">
                                             @csrf
@@ -127,6 +141,64 @@
 
 
     </div>{{--end-of-tile mb-4--}}
+
+    <div class="tile mb-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                    @if($WhoAreWes->count() > 0 )
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{{__('site.Photo 1')}}</th>
+                                <th>{{__('site.Photo 2')}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($WhoAreWes as $index=>$WhoAreWe)
+                                <tr>
+                                    <td>{{++$index}}</td>
+                                    <td><img width="100px" height="100px" src="{{asset('storage/'.$WhoAreWe->photo1)}}" alt="">  </td>
+                                    <td><img width="100px" height="100px" src="{{asset('storage/'.$WhoAreWe->photo2)}}" alt=""></td>
+    {{--                                    <td>--}}
+    {{--                                        --}}{{--Edit buttom--}}
+    {{--                                        @if(auth()->user()->hasPermission('update_contact_us'))--}}
+    {{--                                            <a href="{{route('dashboard.contact_us.edit', $WhoAreWe->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit">Edit</i></a>--}}
+    {{--                                        @else--}}
+    {{--                                            <a href="#" disabled="" class="btn btn-warning btn-sm"><i class="fa fa-edit">{{__('site.Edit')}}</i></a>--}}
+    {{--                                        @endif--}}
+
+    {{--                                        --}}{{--Delete buttom--}}
+    {{--                                        @if(auth()->user()->hasPermission('delete_contact_us'))--}}
+    {{--                                            <form action="{{route('dashboard.contact_us.destroy', $WhoAreWe->id)}}" method="post" style="display: inline-block">--}}
+    {{--                                                @csrf--}}
+    {{--                                                @method('delete')--}}
+    {{--                                                <button type="submit" class="btn btn-danger btn-sm delete"><i class="fa fa-trash"></i>{{__('site.Delete')}}</button>--}}
+    {{--                                            </form>--}}
+    {{--                                        @else--}}
+    {{--                                            <a href="#" disabled="" class="btn btn-danger btn-sm"><i class="fa fa-edit">{{__('site.Delete')}}</i></a>--}}
+    {{--                                        @endif--}}
+
+    {{--                                    </td>--}}
+                                </tr>
+                            @endforeach
+
+                            </tbody>
+
+                        </table>
+                        {{$WhoAreWes->appends(request()->query())->links()}}
+                    @else
+                        <h3 style="font-weight: 400; text-align: center"> No Record Found</h3>
+                    @endif
+                </div>
+            </div>
+            {{--end-of-row--}}
+
+
+    </div>{{--end-of-tile mb-4--}}
+
+
 
 
 @endsection

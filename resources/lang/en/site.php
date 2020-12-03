@@ -115,5 +115,18 @@ return [
     'Photo_2' => 'Photo_2',
     'Photo 1' => 'Photo 1',
     'Photo 2' => 'Photo 2',
+    'Contact Us' => 'Contact Us',
+    'Contact description' => 'Contact description',
+    'address' => 'address',
+    'mail1' => 'mail 1',
+    'mail2' => 'mail 2',
+    'callUs1' => 'callUs 1',
+    'callUs2' => 'callUs 2',
+    'Update Contact Us' => 'Update Contact Us',
+    'Add Contact Us' => 'Add Contact Us',
+    'contact descriptions' => 'contact descriptions',
+    'contact description' => 'contact description',
+    'icon' => 'icon',
+
 
 ];

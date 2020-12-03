@@ -43,10 +43,15 @@
 
                  @include('dashboard.partials._errors')
 
-{{--                 <div class="form-group">--}}
-{{--                     <label>{{__('site.description')}} :</label>--}}
-{{--                     <input type="file" name="icon" class="form-control" value="{{isset($serviceItem)?$serviceItem->name:""}}">--}}
-{{--                 </div>--}}
+                 <div class="form-group">
+                     @isset($serviceItem)
+                         <label>{{__('site.icon')}} :</label><br><br>
+                         <img width="100px" height="100px" src="{{asset('storage/'.$serviceItem->icon)}}" alt=""><br><br>
+                         <input type="file" name="icon" class="form-control">
+                     @else
+                         <input type="file" name="icon" class="form-control" value="{{isset($serviceItem)?$WhoAreWe->icon:""}}">
+                     @endisset
+                 </div>
 
                  <div class="form-group">
                      <label>{{__('site.name')}} :</label>

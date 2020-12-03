@@ -53,7 +53,7 @@
                             <th>#</th>
                             <th>{{__('site.name')}}</th>
                             <th>{{__('site.description')}}</th>
-{{--                            <th>{{__('site.photo')}}</th>--}}
+                            <th>{{__('site.photo')}}</th>
                             <th>{{__('site.action')}}</th>
                         </tr>
                         </thead>
@@ -61,9 +61,9 @@
                         @foreach($AdvertisementItems as $index=>$AdvertisementItem)
                             <tr>
                                 <td>{{++$index}}</td>
-                                <td> {{$AdvertisementItem->name}} </td>
-                                <td> {{\Illuminate\Support\Str::limit($AdvertisementItem->description, 100)}} </td>
-{{--                                <td> {{$AdvertisementItem->photo}} </td>--}}
+                                <td width="300px"> {{\Illuminate\Support\Str::limit($AdvertisementItem->name, 100)}} </td>
+                                <td width="350px"> {{\Illuminate\Support\Str::limit($AdvertisementItem->description, 100)}} </td>
+                                <td width="300px"><img width="100px" height="50px" src="{{asset('storage/'.$AdvertisementItem->photo)}}" alt=""></td>
                                 <td>
                                     {{--Edit buttom--}}
                                     @if(auth()->user()->hasPermission('update_advertisementItem'))

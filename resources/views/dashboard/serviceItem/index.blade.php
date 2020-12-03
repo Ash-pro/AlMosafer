@@ -51,7 +51,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
-{{--                            <th>{{__('site.icon')}}</th>--}}
+                            <th>{{__('site.icon')}}</th>
                             <th>{{__('site.name')}}</th>
                             <th>{{__('site.description')}}</th>
                             <th>{{__('site.action')}}</th>
@@ -61,6 +61,7 @@
                         @foreach($serviceItem as $index=>$serviceIm)
                             <tr>
                                 <td>{{++$index}}</td>
+                                <td width="200px"><img width="100px" height="50px" src="{{asset('storage/'.$serviceIm->icon)}}" alt=""></td>
                                 <td>{{$serviceIm->name}}</td>
                                 <td>{{\Illuminate\Support\Str::limit($serviceIm->description, 50)}}</td>
                                 <td>

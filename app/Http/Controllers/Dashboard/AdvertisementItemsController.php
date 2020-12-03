@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\AdvertisementItems;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdvertisementItemsController extends Controller
 {
@@ -37,29 +38,47 @@ class AdvertisementItemsController extends Controller
         $request->validate([
             'name' => 'required|unique:advertisement_items,name',
         ]);
-        AdvertisementItems::create($request->all());
+        AdvertisementItems::create([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'photo'=>$request->photo->store('images','public'),
+        ]);
         session()->flash('success',__('site.DataAddSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of store
 
-    public function edit(AdvertisementItems $AdvertisementItems)
+    public function edit(AdvertisementItems $advertisementItem)
     {
-        return view($this->path.'create',compact('AdvertisementItems'));
+        return view($this->path.'create',compact('advertisementItem'));
     }//end of edit
 
-    public function update(Request $request, AdvertisementItems $AdvertisementItems)
+    public function update(Request $request, AdvertisementItems $advertisementItem)
     {
         $request->validate([
-            'description' => 'required|unique:categories,description,'.$AdvertisementItems->id,
+            'name' => 'required|unique:advertisement_items,name,'.$advertisementItem->id,
         ]);
-        $AdvertisementItems->update($request->all());
+
+
+        $data = $request->only(['name','description']);
+        if ($request->hasFile('photo')){
+            $photo = $request->photo->store('images','public');
+            Storage::disk('public')->delete($advertisementItem->photo);
+            $data['photo'] = $photo;
+        }
+        $advertisementItem->update($data);
+
+//        $advertisementItem->update([
+//            'name'=>$request->name,
+//            'description'=>$request->description,
+//            'photo'=>$request->photo->store('images','public'),
+//        ]);
         session()->flash('success',__('site.DataUpdatedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of update
 
-    public function destroy(AdvertisementItems $AdvertisementItems)
+    public function destroy(AdvertisementItems $advertisementItem)
     {
-        $AdvertisementItems->delete();
+        $advertisementItem->delete();
         session()->flash('success',__('site.DataDeletedSuccessfully'));
         return redirect()->route($this->path.'index');
     }//end of destroy

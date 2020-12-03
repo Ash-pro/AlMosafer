@@ -33,7 +33,7 @@
     <div class="tile mb-4">
         <div class="row">
             <div class="col-md-12">
-             <form action="{{isset($WhoAreWe)?route('dashboard.WhoAreWes.update',$WhoAreWe->id):route('dashboard.WhoAreWes.store')}}" method="post">
+             <form action="{{isset($WhoAreWe)?route('dashboard.WhoAreWes.update',$WhoAreWe->id):route('dashboard.WhoAreWes.store')}}" method="post" enctype="multipart/form-data">
                  @csrf
                  @if(isset($WhoAreWe))
                      @method('put')
@@ -59,17 +59,28 @@
                 <div class="form-group">
                      <label>{{__('site.Youtube Link')}} :</label>
 {{--                     <textarea name="youtube_link" cols="30" rows="10"  class="form-control">{{isset($WhoAreWe)?$WhoAreWe->youtube_link:""}}</textarea>--}}
-                     <input type="text" name="youtube_link" class="form-control" value="{{isset($WhoAreWe)?$WhoAreWe->description:""}}">
+                     <input type="text" name="youtube_link" class="form-control" value="{{isset($WhoAreWe)?$WhoAreWe->youtube_link:""}}">
                  </div>
 
                  <div class="form-group">
-                     <label>{{__('site.Photo_1')}} :</label>
-                     <input type="file" name="photo1" class="form-control" value="{{isset($WhoAreWe)?$WhoAreWe->photo1:""}}">
+                     <label>{{__('site.Photo_1')}} :</label><br><br>
+                     @isset($WhoAreWe)
+                         <img width="100px" height="100px" src="{{asset('storage/'.$WhoAreWe->photo1)}}" alt=""><br><br>
+                         <input type="file" name="photo1" class="form-control">
+                     @else
+                         <input type="file" name="photo1" class="form-control" value="{{isset($WhoAreWe)?$WhoAreWe->photo1:""}}">
+                     @endisset
                  </div>
 
                  <div class="form-group">
-                     <label>{{__('site.Photo_2')}} :</label>
-                     <input type="file" name="photo2" class="form-control" value="{{isset($WhoAreWe)?$WhoAreWe->photo2:""}}">
+                     <label>{{__('site.Photo_2')}} :</label><br><br>
+                     @isset($WhoAreWe)
+                         <img width="100px" height="100px" src="{{asset('storage/'.$WhoAreWe->photo2)}}" alt="">
+                         <input type="file" name="photo2" class="form-control">
+                     @else
+                         <input type="file" name="photo2" class="form-control" value="{{isset($WhoAreWe)?$WhoAreWe->photo2:""}}">
+                     @endisset
+
                  </div>
 
 
