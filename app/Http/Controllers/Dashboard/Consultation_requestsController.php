@@ -40,7 +40,7 @@ class Consultation_requestsController extends Controller
         Consultation_requests::create($request->all());
 
         session()->flash('success',__('site.DataAddSuccessfully'));
-        return view('welcome');
+        return back();
     }//end of store
 
     public function show($id)

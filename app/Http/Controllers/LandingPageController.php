@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Advertisement;
 use App\AdvertisementItems;
 use App\Category;
+use App\Consultation_requests;
 use App\ContactUs;
 use App\ServiceItem;
 use App\WhoAreWe;
@@ -38,8 +39,17 @@ class LandingPageController extends Controller
                                                     'Advertisement','AdvertisementItems',
                                                     'WhoAreWes','contact_us'
         ));
-    }//end of service
 
+    }//end of Landing
+//
+    public function store (Request $request){
+        $request->validate([
+            'name' => 'required|unique:consultation_requests,name',
+        ]);
+        Consultation_requests::create($request->all());
 
+        session()->flash('success',__('site.DataAddSuccessfully'));
+        return back();
+    }//end of
 
 }

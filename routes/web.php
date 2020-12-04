@@ -19,9 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'LandingPageController@Landing');
+    Route::post('/store', 'LandingPageController@store')->name('store');
+//Route::post('consultation_requests','App\Http\Controllers\Dashboard\Consultation_requestsController@store')->name('consultation_requests');
 
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider')->where('provider','facebook|google|youtube');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->where('provider','facebook|google|youtube');
 
-Route::get('/', 'LandingPageController@Landing');

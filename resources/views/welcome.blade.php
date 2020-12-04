@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
           integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{asset('dashboard_files/plugin/noty/noty.css')}}">
+    <script src="{{asset('dashboard_files/plugin/noty/noty.min.js')}}"></script>d
     <style>
         .images {
             border: 1px solid #ddd;
@@ -103,7 +104,11 @@
                 <div class="contact-form">
                     <div class="row">
                         <div class="col-sm-12 col-lg-12">
-                            <form class="was-validated"  action="{{route('dashboard.consultation_requests.store')}}" method="post">
+                            @include('dashboard.partials._session')
+
+                            <form class="was-validated"  action="{{route('store')}}" method="post">
+                                @csrf
+                                @method('post')
                                 <div class="col-12 form-header ">
                                     <p>المسافر للاستشارات العقارية و تأجير السيارات</p>
                                 </div>
